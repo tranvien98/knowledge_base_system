@@ -198,7 +198,7 @@ class Ui_Diabetes(object):
         a = []
         lines = f.readlines()
         for line in lines:
-            a.append(line)
+            a.append(line.strip())
         Pregnancies = self.lineEdit.setText(a[0])
         Glucose = self.lineEdit_2.setText(a[1])
         BloodPressure = self.lineEdit_3.setText(a[2])

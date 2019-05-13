@@ -36,7 +36,7 @@ class Ui_Advice(object):
         self.textBrowser.setText(advice)
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Lời khuyên"))
         self.label.setText(_translate("Dialog", "Một số lời khuyên"))
         self.pushButton.setText(_translate("Dialog", "OK"))
 

@@ -70,7 +70,7 @@ class Ui_MainView(object):
         self.pushButton.clicked.connect(self.display)
         self.comboBox.addItems(list_Item)
         self.pushButton_3.clicked.connect(self.reset)
-        self.pushButton_2.clicked.connect(self.openWindow)
+        self.pushButton_2.clicked.connect(self.check)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Chuẩn đoán bệnh"))
@@ -98,10 +98,22 @@ class Ui_MainView(object):
             newlist.append(line.strip())
         f.close
         return newlist
+    def check(self):
+        if(len(self.textBrowser.toPlainText()) == 0):
+            self.warning("Thông báo ", "Bạn không có triệu chứng của bệnh")
+        else :
+            self.openWindow()
+
     def openWindow(self):
         self.window = QtWidgets.QDialog()
         self.ui = Ui_Diabetes(self.window)
 
+    def warning(self, title, message):
+        mess = QtWidgets.QMessageBox()
+        mess.setWindowTitle(title)
+        mess.setText(message)
+        mess.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        mess.exec_()
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
