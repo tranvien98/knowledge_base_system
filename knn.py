@@ -8,7 +8,11 @@ from sklearn.metrics import accuracy_score
 class knn:
     def __init__(self, path_csv):
         print('train knn ...')
-        self.df_data = pd.read_csv(path_csv)
+        self.df_data = pd.read_csv(path_csv,  usecols=['Pregnancies', 'Glucose',  'BloodPressure',  'SkinThickness',
+                                 'Insulin',   'BMI',  'DiabetesPedigreeFunction',  'Age',  'Outcome'],
+            dtype={'Pregnancies': 'float', 'Glucose': 'float',  'BloodPressure': 'float',
+              'SkinThickness': 'float',  'Insulin': 'float',   'BMI': 'float',
+                'DiabetesPedigreeFunction': 'float',  'Age': 'float',  'Outcome': 'int32'})
         self.X_train, self.X_test, self.Y_train, self.Y_test = train_test_split(
             self.df_data.loc[:, self.df_data.columns != 'Outcome'], self.df_data['Outcome'], stratify=self.df_data['Outcome'], test_size=0.25)
     def predict(self, inputt):

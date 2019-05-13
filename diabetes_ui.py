@@ -131,6 +131,16 @@ class Ui_Diabetes(object):
 
         self.pushButton.clicked.connect(self.move)
 
+        self.pushButton_3 = QtWidgets.QPushButton(Dialog)
+        self.pushButton_3.setGeometry(QtCore.QRect(0, 70, 130, 40))
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        self.pushButton_2.clicked.connect(Dialog.close)
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButton_3.setText("Chọn")
+        self.pushButton_3.clicked.connect(self.benhnhan)
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Chuẩn đoán"))
@@ -144,7 +154,8 @@ class Ui_Diabetes(object):
         self.label_8.setText(_translate("Dialog", "DiabetesPedigreeFunction"))
         self.label_9.setText(_translate("Dialog", "Age"))
         self.pushButton.setText(_translate("Dialog", "OK"))
-        self.pushButton_2.setText(_translate("Dialog", "Cancle"))
+        self.pushButton_2.setText(_translate("Dialog", "Cancel"))
+        
 
     def move(self):
     
@@ -174,13 +185,28 @@ class Ui_Diabetes(object):
             a.append(float(Bmi))
             a.append(float(DiabetesPedigreeFunction))
             a.append(float(Age))
-            model = knn('diabetes.csv')
+            model = knn('data_diabetes.csv')
             output = model.predict([a])
+            print(output)
             self.openWindow(output[0])
         else :
             self.warning("Cảnh báo", "Bạn nhập sai")
          
-
+    
+    def benhnhan(self):
+        f = open("benhnhan.txt", "r")
+        a = []
+        lines = f.readlines()
+        for line in lines:
+            a.append(line)
+        Pregnancies = self.lineEdit.setText(a[0])
+        Glucose = self.lineEdit_2.setText(a[1])
+        BloodPressure = self.lineEdit_3.setText(a[2])
+        SkinThickness = self.lineEdit_4.setText(a[3])
+        Insulin = self.lineEdit_5.setText(a[4])
+        Bmi = self.lineEdit_6.setText(a[5])
+        DiabetesPedigreeFunction = self.lineEdit_7.setText(a[6])
+        Age = self.lineEdit_8.setText(a[7])
  
 
     def warning(self, title, message):

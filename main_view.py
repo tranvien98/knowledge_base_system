@@ -73,7 +73,7 @@ class Ui_MainView(object):
         self.pushButton_2.clicked.connect(self.openWindow)
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainView"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Chuẩn đoán bệnh"))
         self.label.setText(_translate("MainWindow", "Chuẩn đoán bệnh"))
         self.label_2.setText(_translate("MainWindow", "Triệu chứng bệnh"))
         self.label_3.setText(_translate(
@@ -101,7 +101,6 @@ class Ui_MainView(object):
     def openWindow(self):
         self.window = QtWidgets.QDialog()
         self.ui = Ui_Diabetes(self.window)
-        self.MainWindow.hide()
 
 
 if __name__ == "__main__":
